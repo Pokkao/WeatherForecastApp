@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">Weather Forecast</string>
+
+    <string name="version_name">v. </string>
+
+    <string name="ok">ตกลง</string>
+    <string name="title_time">Time</string>
+    <string name="txt_not_data">-</string>
+    <string name="celsius_degree">°C</string>
+    <string name="fahrenheit_degree">°F</string>
+    <string name="loading_data">Loading...</string>
+    <string name="celsius__fahrenheit_degree">°C / °F</string>
+
+    <string name="txt_empty_error_text">กรุณากรอกข้อมูลให้ครบถ้วน</string>
+    <string name="txt_hint_please_entry_city">กรอก ชื่อเมือง</string>
+
+    <!-- Main Screen Weather -->
+    <string name="title_search_by_city_name">Forecast weather from city name</string>
+    <string name="title_city_name">City name</string>
+    <string name="title_state_code">State code</string>
+    <string name="title_country_code">Country code</string>
+    <string name="title_weather_forecast_whole_day">weather forecast whole day</string>
+    <string name="forecast_by_city_name">forecast</string>
+    <string name="title_forecast_humidity">Humidity</string>
+    <string name="forecast_humidity">Humidity :</string>
+    <string name="forecast_humidity_zero_per">Humidity : - %</string>
+    <string name="unable_determine_weather">ไม่สามารถระบุสภาพอากาศ</string>
+    <string name="not_found_place">ไม่พบสถานที่นี้</string>
+    <string name="can_not_identified">ไม่สามารถระบุได้</string>
+    <string name="txt_error_failed_try_again">กรุณาลองใหม่อีกครั้ง หรือกรอกข้อมูลให้ถูกต้อง</string>
+    <string name="txt_error_no_data_search_try_again">ไม่มีข้อมูลที่ค้นหา กรุณาลองใหม่อีกครั้ง</string>
+
+    <!-- Date Time -->
+    <string name="am">AM</string>
+    <string name="pm">PM</string>
+
+    <string name="time_am">ก่อนเที่ยง</string>
+    <string name="time_pm">หลังเที่ยง</string>
+
+    <!-- Whole Day -->
+    <string name="weather_whole_day">Whole-Day</string>
+    <string name="percent">%</string>
+    <string name="txt_error_no_information_available">ไม่มีข้อมูลสำหรับการพยากรณ์ของวันนี้</string>
+    <string name="txt_error_failed">เกิดข้อผิดพลาด\nกรุณาลองใหม่อีกครั้ง</string>
+    <string name="txt_something_went_wrong">เกิดข้อผิดพลาด</string>
+    <string name="txt_please_try_again_on_whole_day">กรุณาลองใหม่อีกครั้ง โดยกลับสู่หน้าหลักแล้วกรอกข้อมูลให้ถูกต้อง</string>
+
+</resources>

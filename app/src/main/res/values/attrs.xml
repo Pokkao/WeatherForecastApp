@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CustomEditText">
+        <attr name="ed_title" format="string" />
+        <attr name="ed_title_size" format="dimension" />
+        <attr name="ed_title_color" format="color" />
+        <attr name="ed_title_bold" format="boolean" />
+        <attr name="ed_input" format="string" />
+        <attr name="ed_input_size" format="dimension" />
+        <attr name="ed_input_color" format="color" />
+        <attr name="ed_input_bold" format="boolean" />
+        <attr name="ed_input_hint" format="string" />
+        <attr name="ed_input_type" format="enum">
+            <enum name="text" value="0" />
+            <enum name="number" value="1" />
+        </attr>
+
+        <attr name="ed_error" format="string" />
+        <attr name="ed_error_gone" format="boolean" />
+        <attr name="ed_require" format="boolean" />
+
+    </declare-styleable>
+
+</resources>

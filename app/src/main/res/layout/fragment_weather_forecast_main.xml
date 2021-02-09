@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeRefreshWeatherForecast"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/contRootWeatherForecast"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestWeatherForecastMain"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            android:fitsSystemWindows="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/contWeatherForecast"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/centerGuideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.5" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/appCompatImageView"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@drawable/bg_screen_weather_forecast"
+                    app:layout_constraintBottom_toBottomOf="@+id/icHumidity"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvLocationName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/txt_not_data"
+                    android:textColor="@color/white"
+                    android:textSize="34sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="London" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgWeather"
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/bg_radius_white"
+                    android:padding="20dp"
+                    android:src="@drawable/ic_atmosphere"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvLocationName" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvDegree"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txt_not_data"
+                    android:textColor="@color/white"
+                    android:textSize="80sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/imgWeather"
+                    tools:text="19" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvDegree"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvDegree"
+                    app:layout_constraintTop_toTopOf="@+id/tvDegree">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvCelsiusDegree"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="@string/celsius_degree"
+                        android:textColor="@color/white"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvDegree"
+                        app:layout_constraintStart_toEndOf="@+id/tvDegree"
+                        app:layout_constraintTop_toTopOf="@+id/tvDegree" />
+
+                    <View
+                        android:id="@+id/viewLineVertical"
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="3dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@color/white"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvUnitDegree"
+                        app:layout_constraintEnd_toStartOf="@+id/appCompatImageView2"
+                        app:layout_constraintStart_toEndOf="@+id/tvUnitDegree"
+                        app:layout_constraintTop_toTopOf="@+id/tvUnitDegree" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvFahrenheitDegree"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="@string/fahrenheit_degree"
+                        android:textColor="@color/white"
+                        android:textSize="28sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvDegree"
+                        app:layout_constraintStart_toEndOf="@+id/tvDegree"
+                        app:layout_constraintTop_toTopOf="@+id/tvDegree" />
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvWeatherDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/unable_determine_weather"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="@+id/tvDegree"
+                    app:layout_constraintHorizontal_bias="0.514"
+                    app:layout_constraintStart_toStartOf="@+id/tvDegree"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDegree" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/icHumidity"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="10dp"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_humidity"
+                    app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvWeatherDescription" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvHumidity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/forecast_humidity_zero_per"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/icHumidity"
+                    app:layout_constraintStart_toEndOf="@+id/icHumidity"
+                    app:layout_constraintTop_toTopOf="@+id/icHumidity"
+                    tools:text="Humidity : 80%" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/bntForecastWeatherAllDay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/bg_gradient_shape_border"
+                    android:padding="15dp"
+                    android:text="@string/title_weather_forecast_whole_day"
+                    android:textColor="@color/cerulean"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/appCompatImageView" />
+
+                <View
+                    android:id="@+id/viewLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_margin="8dp"
+                    android:background="#4a4a4a"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/bntForecastWeatherAllDay" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvTitleWeather"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="@string/title_search_by_city_name"
+                    android:textColor="@color/black_title"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/edCityName"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/viewLine" />
+
+                <com.pokkao.weatherforecastapp.widgets.CustomEditText
+                    android:id="@+id/edCityName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    app:ed_error="กรุณากรอก ชื่อเมือง"
+                    app:ed_input_hint="@string/txt_hint_please_entry_city"
+                    app:ed_require="true"
+                    app:ed_title="@string/title_city_name"
+                    app:ed_title_bold="true"
+                    app:layout_constraintBottom_toTopOf="@+id/edStateCode"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTitleWeather" />
+
+                <com.pokkao.weatherforecastapp.widgets.CustomEditText
+                    android:id="@+id/edStateCode"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="5dp"
+                    app:ed_input_hint="@string/txt_hint_please_entry_city"
+                    app:ed_input_type="number"
+                    app:ed_require="false"
+                    app:ed_title="@string/title_state_code"
+                    app:ed_title_bold="true"
+                    app:layout_constraintBottom_toTopOf="@id/bntConfirmWeatherForecast"
+                    app:layout_constraintEnd_toStartOf="@+id/centerGuideline"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/edCityName" />
+
+                <com.pokkao.weatherforecastapp.widgets.CustomEditText
+                    android:id="@+id/edCountryCode"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="10dp"
+                    app:ed_input_hint="@string/txt_hint_please_entry_city"
+                    app:ed_input_type="number"
+                    app:ed_require="false"
+                    app:ed_title="@string/title_country_code"
+                    app:ed_title_bold="true"
+                    app:layout_constraintBottom_toTopOf="@+id/bntConfirmWeatherForecast"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/centerGuideline"
+                    app:layout_constraintTop_toBottomOf="@+id/edCityName" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/bntConfirmWeatherForecast"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_confirm_gradient"
+                    android:padding="18dp"
+                    android:text="@string/forecast_by_city_name"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <FrameLayout
+            android:id="@+id/progressBarWeather"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/transparent_25"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_dialog_corner_round"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="20dp">
+
+                <FrameLayout
+                    android:id="@+id/fmProgressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ProgressBar
+                        android:id="@+id/customProgressBar"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:indeterminateBehavior="cycle" />
+
+                </FrameLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/customProgressMessageTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/loading_data"
+                    android:textColor="@color/charcoal_grey"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/fmProgressBar" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </FrameLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
