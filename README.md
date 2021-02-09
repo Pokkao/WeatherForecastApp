@@ -45,7 +45,7 @@
 ![Image](https://i.imgur.com/zHy6ols.png)
 
 - Project Structure
-ใช้ Activity 1 และ fragment 2 หน้า
+ใช้ Activity 2 [splash screen, main screen] และ fragment 2 [main current weather, whole-day screen]
 
 ![Image](https://imgur.com/kdB9yPQ.png)
 
