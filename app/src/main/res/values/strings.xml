@@ -18,6 +18,8 @@
     <string name="title_search_by_city_name">Forecast weather from city name</string>
     <string name="title_city_name">City name</string>
     <string name="title_state_code">State code</string>
+    <string name="hint_state_code">กรอก รหัสรัฐ</string>
+    <string name="hint_country_code">กรอก รหัสประเทศ</string>
     <string name="title_country_code">Country code</string>
     <string name="title_weather_forecast_whole_day">weather forecast whole day</string>
     <string name="forecast_by_city_name">forecast</string>
