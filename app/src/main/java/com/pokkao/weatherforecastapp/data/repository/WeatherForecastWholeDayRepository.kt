@@ -3,7 +3,7 @@ package com.pokkao.weatherforecastapp.data.repository
 import com.pokkao.weatherforecastapp.data.response.HourlyForecastFortyEightHoursResponse
 import com.pokkao.weatherforecastapp.data.response.WeatherTodayResponse
 import com.pokkao.weatherforecastapp.data.service.WeatherService
-import io.reactivex.Single
+import io.reactivex.Observable
 import javax.inject.Inject
 
 interface WeatherForecastWholeDayRepository {
@@ -11,12 +11,12 @@ interface WeatherForecastWholeDayRepository {
         lat: String,
         lon: String,
         dt: String
-    ): Single<WeatherTodayResponse>
+    ): Observable<WeatherTodayResponse>
 
     fun getHourlyForecastFor48HoursService(
         lat: String,
         lon: String
-    ): Single<HourlyForecastFortyEightHoursResponse>
+    ): Observable<HourlyForecastFortyEightHoursResponse>
 }
 
 class WeatherForecastWholeDayRepositoryImpl @Inject constructor(private val service: WeatherService) :
@@ -26,7 +26,7 @@ class WeatherForecastWholeDayRepositoryImpl @Inject constructor(private val serv
         lat: String,
         lon: String,
         dt: String
-    ): Single<WeatherTodayResponse> {
+    ): Observable<WeatherTodayResponse> {
         return service.getWeatherTodayService(
             lat,
             lon,
@@ -37,7 +37,7 @@ class WeatherForecastWholeDayRepositoryImpl @Inject constructor(private val serv
     override fun getHourlyForecastFor48HoursService(
         lat: String,
         lon: String
-    ): Single<HourlyForecastFortyEightHoursResponse> {
+    ): Observable<HourlyForecastFortyEightHoursResponse> {
         return service.getHourlyForecastFor48HoursService(
             lat,
             lon

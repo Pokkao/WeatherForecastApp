@@ -4,6 +4,7 @@ import com.pokkao.weatherforecastapp.data.response.CurrentWeatherResponse
 import com.pokkao.weatherforecastapp.data.response.HourlyForecastFortyEightHoursResponse
 import com.pokkao.weatherforecastapp.data.response.WeatherTodayResponse
 import com.pokkao.weatherforecastapp.data.ApiClient.API_KEY
+import io.reactivex.Observable
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -26,7 +27,7 @@ interface WeatherService {
                                @Query("dt") dt: String ?= null,
                                @Query("units") units: String = "metric",
                                @Query("appid") appid: String = API_KEY
-    ): Single<WeatherTodayResponse>
+    ): Observable<WeatherTodayResponse>
 
     @GET("${PATH_WEATHER}/onecall")
     fun getHourlyForecastFor48HoursService(@Query("lat") lat: String,
@@ -34,6 +35,6 @@ interface WeatherService {
                                     @Query("exclude") cnt: String = "current,minutely,daily,alerts",
                                     @Query("units") units: String = "metric",
                                     @Query("appid") appid: String = API_KEY
-    ): Single<HourlyForecastFortyEightHoursResponse>
+    ): Observable<HourlyForecastFortyEightHoursResponse>
 
 }

@@ -5,7 +5,10 @@ import com.pokkao.weatherforecastapp.data.mapper.WeatherMapper
 import com.pokkao.weatherforecastapp.data.model.WeatherForecastTodayItem
 import com.pokkao.weatherforecastapp.data.model.WeatherForecastTodayListModel
 import com.pokkao.weatherforecastapp.data.repository.WeatherForecastWholeDayRepository
+import com.pokkao.weatherforecastapp.data.response.HourlyForecastFortyEightHoursResponse
+import com.pokkao.weatherforecastapp.data.response.WeatherTodayResponse
 import com.pokkao.weatherforecastapp.utils.convertTimestampToDate
+import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
@@ -29,26 +32,27 @@ class WeatherForecastWholeDayPresenter @Inject constructor(
     ) {
         view.showProgress()
 
-        repository.getWeatherTodayService(
-            lat,
-            lon,
-            dt
-        ).flatMap { it ->
-
-            WeatherMapper().mapWeatherToday(it.hourly)?.toList()?.let {
-                weatherForecastTodayList.addAll(it)
-            }
-
-
+        Observable.zip(
+            repository.getWeatherTodayService(
+                lat,
+                lon,
+                dt
+            ),
             repository.getHourlyForecastFor48HoursService(
                 lat,
                 lon
-            ).map { response ->
+            ), { weatherToday: WeatherTodayResponse?, hourlyForecast: HourlyForecastFortyEightHoursResponse? ->
+
+                WeatherMapper().mapWeatherToday(weatherToday?.hourly)?.toList()?.let {
+                    weatherForecastTodayList.addAll(it)
+                } ?: run {
+                    weatherForecastTodayList.addAll(listOf())
+                }
 
                 val currentTime = System.currentTimeMillis() / 1000
 
                 // Map model
-                val mapHistoryWeather = response.hourly?.filter {
+                val mapHistoryWeather = hourlyForecast?.hourly?.filter {
                     convertTimestampToDate(currentTime) == convertTimestampToDate(
                         it.dt ?: 0
                     )
@@ -57,6 +61,8 @@ class WeatherForecastWholeDayPresenter @Inject constructor(
                 // Add all list with Current Weather
                 WeatherMapper().mapHistoryWeather(mapHistoryWeather)?.toList()?.let {
                     weatherForecastTodayList.addAll(it)
+                } ?: run {
+                    weatherForecastTodayList.addAll(listOf())
                 }
 
                 // Filter specific today
@@ -68,10 +74,7 @@ class WeatherForecastWholeDayPresenter @Inject constructor(
                     }
                 )
 
-            }
-
-        }
-            .subscribeOn(Schedulers.io())
+            }).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 { data ->
